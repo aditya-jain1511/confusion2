@@ -1,11 +1,11 @@
 //act as psuedo container component for my webpage application, most of the work from app.js will be  moved here. it wont be rendering any views, as it wont be rendering any views
 
 import React, {Component} from 'react';
-import {Navbar, NavbarBrand} from 'reactstrap';
 import Menu from "./MenuComponent";
 import {DISHES} from '../shared/dishes';
 import DishDetail from "./DishDetail";
-
+import Header from './Header';
+import Footer from './Footer';
 
 class Main extends Component{
 
@@ -37,17 +37,14 @@ class Main extends Component{
 
   render(){
     return (
-      <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/"> Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
+      <>
+        <Header />
         <Menu dishes={this.state.dishes} onClick={
             (dishID)=>this.onDishSelect(dishID)
         }/>
         {this.renderDish(this.state.selectedDish)}
-      </div>
+        <Footer />
+      </>
     );
   }
 }

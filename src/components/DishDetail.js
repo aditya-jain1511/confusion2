@@ -13,7 +13,7 @@ const RenderComment = ({dish})=>{
     });
 
     return(
-        <div className="col-12 col-md-5 m-1">
+        <div className="col-12 col-md-6 mt-3 mb-1">
             <Card>
                 <CardBody>
                     <CardTitle><h5>Comments:</h5></CardTitle>
@@ -26,7 +26,7 @@ const RenderComment = ({dish})=>{
 
 const RenderDish = ({dish})=>{
     return(
-        <div key={dish.id} className="col-12 col-md-5 m-1">
+        <div key={dish.id} className="col-12 col-md-6 mt-3 mb-1">
             <Card>
                 <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
                 <CardBody>
