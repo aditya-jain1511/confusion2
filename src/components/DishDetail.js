@@ -8,12 +8,11 @@ class DishDetail extends Component{
     }
 
     render(){
-        
         const com= this.props.dish.comments.map((comment)=>{
             return(
                 <div>
                     <p>{comment.comment}</p>
-                    <p>-- {comment.author}, {comment.date}</p>
+                    <p>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
                     <br></br>
                 </div>  
             )
@@ -22,6 +21,7 @@ class DishDetail extends Component{
         
 
         return(
+            <div className="container">
             <div className="row">
                 <div key={this.props.dish.id} className="col-12 col-md-5 m-1">
                     <Card>
@@ -39,6 +39,7 @@ class DishDetail extends Component{
                         </CardBody>
                     </Card>
                 </div>
+            </div>
             </div>
         )
     }
