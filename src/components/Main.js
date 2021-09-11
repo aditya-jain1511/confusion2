@@ -27,7 +27,7 @@ class Main extends Component{
   renderDish(dishID){
     if(dishID!=null){
         return(
-            <div>
+            <div className="container">
               <DishDetail dish = {dishID}/>
             </div>
         )
