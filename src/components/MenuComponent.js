@@ -21,7 +21,10 @@ class Menu extends Component{
         if(dishID!=null){
             return(
                 <div className="container">
-                  <DishDetail dish = {dishID}/>
+                    <DishDetail 
+                        dish = {dishID}
+                        comments = {this.props.comments.filter((comment)=>comment.dishId===dishID.id)}
+                    />
                 </div>
             )
         } 

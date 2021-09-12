@@ -3,7 +3,7 @@ import {Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
 
 const RenderComment = ({dish})=>{
     
-    const com= dish.comments.map((comment)=>{
+    const com= dish.map((comment)=>{
         return(
             <CardText key={comment.id}>
                 {comment.comment}<br></br>
@@ -42,7 +42,7 @@ const DishDetail = (props)=>{
     return(
         <div className="row">
             <RenderDish dish={props.dish}></RenderDish>
-            <RenderComment dish={props.dish} />
+            <RenderComment dish={props.comments} />
         </div>
     )
 }
