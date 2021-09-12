@@ -33,7 +33,6 @@
     padding: 20px 0px 20px 0px;
 }
 
-
 address{
     font-size:80%;
     margin:0px;
@@ -42,4 +41,28 @@ address{
 
 .navbar-dark {
     background-color: #512DA8;
+}
+
+.card{
+    border-radius: 10px;
+}
+
+.card-img{
+    border-radius: 10px;
+}
+
+.card-title{
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.card-img-overlay > .card-title{
+    display: table;
+    position: relative;
+    padding: 0.1em 0.3em 0.1em 1.5em;
+    background-color: rgba(247, 244, 244, 0.822);
+    background-size: cover;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    left:-1.5em;
 }
