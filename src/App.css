@@ -43,6 +43,20 @@ address{
     background-color: #512DA8;
 }
 
+.modal-header{
+    background-color: #512DA8;
+    color: #e9ecef;
+}
+
+.modal-body{
+    background-color: #9575CD;
+    color: #e9ecef;
+}
+
+.close, .close:hover{
+    color: #e9ecef;
+}
+
 .card{
     border-radius: 10px;
 }

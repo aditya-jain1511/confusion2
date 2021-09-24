@@ -9,11 +9,14 @@ class Header extends Component{
 
         this.state={
             isNavOpen:false,
-            isModalOpen:false,
+            isLogModalOpen:false,
+            isResModalOpen:false,
         }
         this.toggleNav=this.toggleNav.bind(this);
-        this.toggleModal=this.toggleModal.bind(this);
+        this.toggleLogModal=this.toggleLogModal.bind(this);
         this.handleLogin=this.handleLogin.bind(this);
+        this.handleRes=this.handleRes.bind(this);
+        this.toggleReserve=this.toggleReserve.bind(this);
     }
 
     toggleNav(){
@@ -25,15 +28,27 @@ class Header extends Component{
         }
     }
 
-    toggleModal() {
+    toggleLogModal() {
         this.setState({
-            isModalOpen: !this.state.isModalOpen
+            isLogModalOpen: !this.state.isLogModalOpen
+        });
+    }
+
+    toggleReserve(){
+        this.setState({
+            isResModalOpen: !this.state.isResModalOpen
         });
     }
 
     handleLogin(event) {
-        this.toggleModal();
+        this.toggleLogModal();
         alert("Username: " + this.username.value + " Password: " + this.password.value + " Remember: " + this.remember.checked);
+        event.preventDefault();
+    }
+
+    handleRes(event){
+        this.toggleReserve();
+        alert("Number of Guests: "+ this.guests.value+ " Section: "+this.section.value+ " Date: "+ this.date.value+ " Time: "+ this.time.value);
         event.preventDefault();
     }
 
@@ -69,7 +84,7 @@ class Header extends Component{
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button onClick={this.toggleModal} color="primary">
+                                <Button onClick={this.toggleLogModal} color="primary">
                                     <span className="fa fa-sign-in fa-lg"></span>Login
                                 </Button>
                             </NavItem>
@@ -84,11 +99,14 @@ class Header extends Component{
                                 <h1>Ristorante con Fusion</h1>
                                 <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
                             </div>
+                            <div className="col-12 col-sm-2 offset-sm-1 align-self-center">
+                                <Button color="warning" className="btn btn-block btn-sm btn-warning reservebutton" onClick={this.toggleReserve}>Reserve a Table</Button>
+                            </div>
                         </div>
                     </div>
                 </Jumbotron>
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                <Modal isOpen={this.state.isLogModalOpen} toggle={this.toggleLogModal}>
+                    <ModalHeader toggle={this.toggleLogModal}>Login</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup row>
@@ -118,6 +136,50 @@ class Header extends Component{
                             </FormGroup>
                         </Form>
                     </ModalBody>
+                </Modal>
+
+                <Modal isOpen={this.state.isResModalOpen} toggle={this.toggleReserve} className="modal-lg">
+                    <ModalHeader toggle={this.toggleReserve}>Reserve a Table</ModalHeader> 
+                    <ModalBody>
+                        <Form onSubmit={this.handleRes}>
+                            <FormGroup row tag="guests" className="align-items-center">
+                                <Label htmlFor="guests" md={2}>Number Of Guests</Label>
+                                <Col md={10}>
+                                    <Input type="select" name="guests" innerRef={(input)=>this.guests=input}>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </Input> 
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row tag="section" className="align-items-center">
+                                <Label htmlFor="section" md={2}>Section</Label>
+                                <Col md={10}>
+                                <Input type="select" name="section" innerRef={(input)=>this.section=input}>
+                                        <option value="smoking">Smoking</option>
+                                        <option value="non-smoking">Non Smoking</option>
+                                    </Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label md={2} htmlFor="date">Date and Time</Label>
+                                <Col md={5}>
+                                    <Input type="date" name="date" innerRef={(input)=> this.date=input} />
+                                </Col>
+                                <Col md={5}>
+                                    <Input type="time" name="time" innerRef={(input)=> this.time=input} />
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Col md={{size: 6, offset:2}}>
+                                    <Button type="submit" value="submit" color="primary" className="btn-block">Reserve</Button>
+                                </Col>
+                            </FormGroup>
+                        </Form>
+                    </ModalBody>                   
                 </Modal>
             </>
         )
