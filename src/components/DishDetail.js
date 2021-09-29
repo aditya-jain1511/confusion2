@@ -9,6 +9,7 @@ const minLength = (len) => (val) => (val) && (val.length >= len);
 
 class CommentForm extends Component{
     constructor(props){
+        console.log(props)
         super(props);
 
         this.state={
@@ -16,7 +17,7 @@ class CommentForm extends Component{
         }
 
         this.toggleComModal=this.toggleComModal.bind(this)
-        this.addComment=this.addComment.bind(this)
+        this.addComm=this.addComm.bind(this)
     }
 
     toggleComModal() {
@@ -25,10 +26,11 @@ class CommentForm extends Component{
         });
     }
 
-    addComment(values) {
+    addComm(values) {
         this.toggleComModal();
         alert("Current state is: "+JSON.stringify(values));
         console.log("Current state is: "+JSON.stringify(values));
+        this.props.addComment(this.props.dish.id, values.rating, values.author, values.message)
     }
 
     render(){
@@ -40,7 +42,7 @@ class CommentForm extends Component{
                 <Modal isOpen={this.state.isComModalOpen} toggle={this.toggleComModal}>
                     <ModalHeader toggle={this.toggleComModal}>Add Comment</ModalHeader>
                     <ModalBody>
-                        <LocalForm onSubmit={(values)=> this.addComment(values)}>
+                        <LocalForm onSubmit={(values)=> this.addComm(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="rating" md={2}>Rating</Label>
                                 <Col md={10}>
@@ -80,7 +82,7 @@ class CommentForm extends Component{
 }
 
 
-const RenderComment = ({dish, comment})=>{
+const RenderComment = ({dish, comment, addComment})=>{
     
     const com= comment.map((comment)=>{
         return(
@@ -97,7 +99,7 @@ const RenderComment = ({dish, comment})=>{
                 <CardBody>
                     <CardTitle><h5>Comments:</h5></CardTitle>
                     {com}
-                    <CommentForm dish={dish} comment={comment}></CommentForm>
+                    <CommentForm dish={dish} comment={comment} addComment={addComment}></CommentForm>
                 </CardBody>
             </Card>
         </div>
@@ -132,7 +134,7 @@ const DishDetail = (props)=>{
             </div>
             <div className="row row-content">
                 <RenderDish dish={props.dish}></RenderDish>
-                <RenderComment dish={props.dish} comment={props.comments} />
+                <RenderComment dish={props.dish} comment={props.comments} addComment={props.addComment} />
             </div>
         </div>
         
