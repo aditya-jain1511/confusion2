@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Card, CardImg, CardImgOverlay,  CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
-
+import {Loading} from './Loading';
 
 class Menu extends Component{
 
@@ -28,22 +28,59 @@ class Menu extends Component{
             );
         });
 
-        return(
-            <div className="container">
-                <div className="row">
+        if (this.props.isLoading){
+            return(
+                <div className="container">
+                    <div className="row">
                     <Breadcrumb>
-                        <BreadcrumbItem>
-                            <Link to="/home">Home</Link>
-                        </BreadcrumbItem>
-                        <BreadcrumbItem active>Menu</BreadcrumbItem>
-                    </Breadcrumb>
-                    <div className="col-12"><h3>Menu</h3><hr></hr></div>
+                            <BreadcrumbItem>
+                                <Link to="/home">Home</Link>
+                            </BreadcrumbItem>
+                            <BreadcrumbItem active>Menu</BreadcrumbItem>
+                        </Breadcrumb>
+                        <div className="col-12"><h3>Menu</h3><hr></hr></div>
+                    </div>
+                    <div className="row row-content">
+                        <Loading></Loading>
+                    </div>
                 </div>
-                <div className="row row-content">
-                    {menubar}
+            )
+        }
+        else if(this.props.errMess) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Breadcrumb>
+                            <BreadcrumbItem>
+                                <Link to="/home">Home</Link>
+                            </BreadcrumbItem>
+                            <BreadcrumbItem active>Menu</BreadcrumbItem>
+                        </Breadcrumb>
+                        <div className="col-12"><h3>Menu</h3><hr></hr></div>
+                    </div>
+                    <div className="row row-content">
+                        <h4>{this.props.errMess}</h4>
+                    </div>
                 </div>
-            </div>
-        );
+            )
+        }
+        else
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Breadcrumb>
+                            <BreadcrumbItem>
+                                <Link to="/home">Home</Link>
+                            </BreadcrumbItem>
+                            <BreadcrumbItem active>Menu</BreadcrumbItem>
+                        </Breadcrumb>
+                        <div className="col-12"><h3>Menu</h3><hr></hr></div>
+                    </div>
+                    <div className="row row-content">
+                        {menubar}
+                    </div>
+                </div>
+            );
     }
 }        
 
