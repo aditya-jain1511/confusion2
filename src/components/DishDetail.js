@@ -32,7 +32,7 @@ class CommentForm extends Component{
         this.toggleComModal();
         alert("Current state is: "+JSON.stringify(values));
         console.log("Current state is: "+JSON.stringify(values));
-        this.props.addComment(this.props.dish.id, values.rating, values.author, values.message)
+        this.props.postComment(this.props.dish.id, values.rating, values.author, values.message)
     }
 
     render(){
@@ -84,7 +84,7 @@ class CommentForm extends Component{
 }
 
 
-const RenderComment = ({dish, comment, addComment})=>{
+const RenderComment = ({dish, comment, postComment})=>{
     
     const com= comment.map((comment)=>{
         return(
@@ -101,7 +101,7 @@ const RenderComment = ({dish, comment, addComment})=>{
                 <CardBody>
                     <CardTitle><h5>Comments:</h5></CardTitle>
                     {com}
-                    <CommentForm dish={dish} comment={comment} addComment={addComment}></CommentForm>
+                    <CommentForm dish={dish} comment={comment} postComment={postComment}></CommentForm>
                 </CardBody>
             </Card>
         </div>
@@ -156,7 +156,7 @@ const DishDetail = (props)=>{
             </div>
             <div className="row row-content">
                 <RenderDish dish={props.dish}></RenderDish>
-                <RenderComment dish={props.dish} comment={props.comments} addComment={props.addComment} />
+                <RenderComment dish={props.dish} comment={props.comments} postComment={props.postComment} />
             </div>
         </div>
         
