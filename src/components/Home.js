@@ -35,6 +35,8 @@ function RenderCard({item, isLoading, errMess}){
 }
 
 export default function Home(props){
+    console.log("that: "+ JSON.stringify(props));
+
     return(
         <div className="container">
             <div className="row align-items-start">
@@ -45,7 +47,7 @@ export default function Home(props){
                     <RenderCard item={props.promo} isLoading={props.promosLoading} errMess={props.promosErrMess} />
                 </div>
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.lead} />
+                    <RenderCard item={props.lead} isLoading={props.leadLoading} errMess={props.leadErrMess} />
                 </div>
             </div>
         </div>

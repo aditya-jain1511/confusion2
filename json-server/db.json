@@ -271,6 +271,28 @@
       "message": "afadsfds",
       "date": "2017-12-04T09:41:49.890Z",
       "id": 1
+    },
+    {
+      "firstname": "Aditya",
+      "lastname": "Jain",
+      "telnum": "8146004174",
+      "email": "aditya151101@gmail.com",
+      "agree": true,
+      "contactType": "Tel.",
+      "message": "qwerty",
+      "date": "2021-10-31T17:50:13.156Z",
+      "id": 2
+    },
+    {
+      "firstname": "Aditya",
+      "lastname": "Jain",
+      "telnum": "9999999999",
+      "email": "adityajain64@gmail.com",
+      "agree": false,
+      "contactType": "Tel.",
+      "message": "1234567890",
+      "date": "2021-10-31T17:51:23.164Z",
+      "id": 3
     }
   ]
 }

@@ -10,3 +10,7 @@ export const COMMENTS_FAILED = 'COMMENTS_FAILED';
 export const PROMOS_LOADING = 'PROMOS_LOADING';
 export const ADD_PROMOS = 'ADD_PROMOS';
 export const PROMOS_FAILED = 'PROMOS_FAILED';
+
+export const LEAD_LOADING = 'LEAD_LOADING';
+export const ADD_LEAD = 'ADD_LEAD';
+export const LEAD_FAILED = 'LEADS_FAILED';
