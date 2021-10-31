@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {Card, CardImg, CardImgOverlay,  CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {Loading} from './Loading';
+import { baseUrl } from '../shared/baseUrl';
 
 class Menu extends Component{
 
@@ -9,7 +10,7 @@ class Menu extends Component{
         return (
             <Card>
                 <Link to={`/menu/${dish.id}`}>
-                    <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
+                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}></CardImg>
                     <CardImgOverlay>
                         <CardTitle>{dish.name}</CardTitle>
                     </CardImgOverlay>
